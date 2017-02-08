@@ -1,0 +1,152 @@
+//
+//  ShoppingListTableViewController.swift
+//  Shopping List Pro
+//
+//  Created by Warren Hansen on 2/8/17.
+//  Copyright © 2017 Warren Hansen. All rights reserved.
+//
+
+import UIKit
+import CoreData
+
+class ShoppingListTableViewController: UITableViewController {
+    
+    var groceries = [NSManagedObject]()  // changed from string
+    var managedObjectContext: NSManagedObjectContext?   // refernce to appdelagate managed onnject
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // get acces to app delagate
+        let appDelagate = UIApplication.shared.delegate as! AppDelegate
+        
+        //  set access to managed context
+        managedObjectContext = appDelagate.persistentContainer.viewContext
+        
+        loadData()
+    }
+
+    // get data from grocery entity
+    func loadData() {
+        // create request object pass in our ns managed object
+        let request: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "Grocery")
+        
+        do {
+            let results = try managedObjectContext?.fetch(request) // get result
+            groceries = results!                    // store result in our array
+            tableView.reloadData()
+        }
+        catch {
+            fatalError("Error in retrieving grocery item") // catch error
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func addAction(_ sender: UIBarButtonItem) {
+       
+        let alertController = UIAlertController(title: "Shopping Item", message: "What would you like?", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addTextField { (textField: UITextField) in
+            
+        }
+        
+        let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default) {[weak self] (action: UIAlertAction) in
+            let textField = alertController.textFields?.first
+            //self?.groceries.append(textField!.text!)
+            
+            let entity = NSEntityDescription.entity(forEntityName: "Grocery", in: (self?.managedObjectContext)!)
+            
+            let grocery = NSManagedObject(entity: entity!, insertInto: self?.managedObjectContext)
+            
+            grocery.setValue(textField!.text!, forKey: "item")
+            
+            do {
+                try self?.managedObjectContext?.save()
+            } catch {
+                fatalError("Error in storing date")
+            }
+            
+            self?.loadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil)
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return groceries.count
+    }
+
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groceryCell", for: indexPath)
+
+        let grocery = self.groceries[indexPath.row]
+        
+        cell.textLabel?.text = grocery.value(forKey: "item") as? String
+
+        return cell
+    }
+    
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

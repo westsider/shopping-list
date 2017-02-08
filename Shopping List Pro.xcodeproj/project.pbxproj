@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		0D8A97F41E4B0A9E00C53EA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A97F31E4B0A9E00C53EA7 /* AppDelegate.swift */; };
-		0D8A97F61E4B0A9E00C53EA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A97F51E4B0A9E00C53EA7 /* ViewController.swift */; };
 		0D8A97F91E4B0A9E00C53EA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A97F71E4B0A9E00C53EA7 /* Main.storyboard */; };
 		0D8A97FC1E4B0A9E00C53EA7 /* Shopping_List_Pro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A97FA1E4B0A9E00C53EA7 /* Shopping_List_Pro.xcdatamodeld */; };
 		0D8A97FE1E4B0A9E00C53EA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A97FD1E4B0A9E00C53EA7 /* Assets.xcassets */; };
 		0D8A98011E4B0A9E00C53EA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D8A97FF1E4B0A9E00C53EA7 /* LaunchScreen.storyboard */; };
+		0D8A98091E4B0C3C00C53EA7 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A98081E4B0C3C00C53EA7 /* ShoppingListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D8A97F01E4B0A9E00C53EA7 /* Shopping List Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopping List Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8A97F31E4B0A9E00C53EA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0D8A97F51E4B0A9E00C53EA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0D8A97F81E4B0A9E00C53EA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D8A97FB1E4B0A9E00C53EA7 /* Shopping_List_Pro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shopping_List_Pro.xcdatamodel; sourceTree = "<group>"; };
 		0D8A97FD1E4B0A9E00C53EA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D8A98001E4B0A9E00C53EA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D8A98021E4B0A9E00C53EA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D8A98081E4B0C3C00C53EA7 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShoppingListTableViewController.swift; path = ../ShoppingListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +56,12 @@
 		0D8A97F21E4B0A9E00C53EA7 /* Shopping List Pro */ = {
 			isa = PBXGroup;
 			children = (
-				0D8A97F31E4B0A9E00C53EA7 /* AppDelegate.swift */,
-				0D8A97F51E4B0A9E00C53EA7 /* ViewController.swift */,
 				0D8A97F71E4B0A9E00C53EA7 /* Main.storyboard */,
+				0D8A98081E4B0C3C00C53EA7 /* ShoppingListTableViewController.swift */,
 				0D8A97FD1E4B0A9E00C53EA7 /* Assets.xcassets */,
 				0D8A97FF1E4B0A9E00C53EA7 /* LaunchScreen.storyboard */,
 				0D8A98021E4B0A9E00C53EA7 /* Info.plist */,
+				0D8A97F31E4B0A9E00C53EA7 /* AppDelegate.swift */,
 				0D8A97FA1E4B0A9E00C53EA7 /* Shopping_List_Pro.xcdatamodeld */,
 			);
 			path = "Shopping List Pro";
@@ -141,8 +141,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8A97FC1E4B0A9E00C53EA7 /* Shopping_List_Pro.xcdatamodeld in Sources */,
-				0D8A97F61E4B0A9E00C53EA7 /* ViewController.swift in Sources */,
 				0D8A97F41E4B0A9E00C53EA7 /* AppDelegate.swift in Sources */,
+				0D8A98091E4B0C3C00C53EA7 /* ShoppingListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
